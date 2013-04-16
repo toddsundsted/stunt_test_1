@@ -33768,7 +33768,6 @@ return;
 $restrict_to_caller($system, "server_started");
 unlisten((port = listeners()[1][2]));
 $lookup("server"):start(port);
-server_log(toliteral(ctime()));
 .
 #134:0
 $private();
