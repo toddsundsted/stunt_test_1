@@ -33762,7 +33762,8 @@ return;
 .
 #130:0
 $restrict_to_caller($system, "server_started");
-$lookup("server"):start(8888);
+unlisten((port = listeners()[1][2]));
+$lookup("server"):start(port);
 .
 #134:0
 $private();
