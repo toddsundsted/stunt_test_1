@@ -1,0 +1,6 @@
+* Logging In
+  Two boot players (#5 and #6) are enabled for passkey login.  Set the
+  passkeys using `heroku config add key=value'.  The key is of the form:
+  "Stunt_Passkey_<name>" and the value is the passkey.  For example:
+  - heroku config add Stunt_Passkey_Wizard=abc123
+  - heroku config add Stunt_Passkey_Programmer=foobar
