@@ -1,6 +1,32 @@
-* Logging In
-  Two boot players (#5 and #6) are enabled for passkey login.  Set the
-  passkeys using `heroku config add key=value'.  The key is of the form:
-  "Stunt_Passkey_<name>" and the value is the passkey.  For example:
-  - heroku config add Stunt_Passkey_Wizard=abc123
-  - heroku config add Stunt_Passkey_Programmer=foobar
+* Note
+  This is a proof-of-concept, and is suitable for playing with a
+  running Stunt server and database without the hassle of hosting your
+  own instance.  It is otherwise _not ready for prime-time_.
+* Getting Started
+  This brief tutorial assumes you have a credible working knowledge of
+  both Git (http://git-scm.com/) and Heroku (https://www.heroku.com/).
+  It assumes you are reading this because you have cloned the test
+  repository and intend to use it as a starting point.
+
+  1. Create a Heroku app and specify the Stunt buildpack:
+     - heroku create stuntapp --buildpack https://github.com/toddsundsted/heroku-buildpack-stunt
+  2. Set passkeys for one (or both) of the default users.  This is not
+     secure and is intended only for bootstrapping.  The key is of the
+     form: "Stunt_Passkey_<name>" and the value is the passkey.
+     - heroku config add Stunt_Passkey_Wizard=<wizard player passkey>
+     - heroku config add Stunt_Passkey_Programmer=<programmer player passkey>
+  3. Commit changes to git and push to Heroku:
+     - git push heroku master
+  4. Open in the browser:
+     - heroku open
+  5. Connect using one of the passkeys.
+
+  At this point you should see the Stunt console and you should be
+  able to interact with the running server instance.
+* Caveats
+  1. Changes to the database are not persisted.  Stunt will eventually
+     address this by providing transparent serialization to/from a
+     backend store.
+  2. You may not hit the same instance.  Heroku routes requests to
+     instances/dynos on the backend based on load, and does not
+     guarantee that sessions will stick to any given instance.
