@@ -13073,16 +13073,12 @@ server_log("WARNING:   and for good measure:");
 for player in ($passkey_players)
 server_log(tostr("WARNING:     ; set_player_flag(", player, ", 0)"));
 endfor
-i = random(100000) + 100000;
 for player in ($passkey_players)
-passkey = string_hash((tostr(random()) + ctime(time())) + player.name);
-while (i)
-((!(i % 100)) && ((ticks_left() < 2000) || (seconds_left() < 2))) && suspend(0);
-passkey = string_hash(passkey);
-i = i - 1;
-endwhile
-server_log(tostr("PASSKEY for \"", player.name, "\" (", player, ("): " + passkey) + " (keep it secret)"));
+if (passkey = getenv(tostr("Stunt_Passkey_", player.name)))
 player.passkey = passkey;
+else
+player.passkey = 0;
+endif
 endfor
 endif
 return;
