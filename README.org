@@ -13,8 +13,8 @@
   2. Set passkeys for one (or both) of the default users.  This is not
      secure and is intended only for bootstrapping.  The key is of the
      form: "Stunt_Passkey_<name>" and the value is the passkey.
-     - heroku config add Stunt_Passkey_Wizard=<wizard player passkey>
-     - heroku config add Stunt_Passkey_Programmer=<programmer player passkey>
+     - heroku config:set Stunt_Passkey_Wizard=<wizard player passkey>
+     - heroku config:set Stunt_Passkey_Programmer=<programmer player passkey>
   3. Commit changes to git and push to Heroku:
      - git push heroku master
   4. Open in the browser:
